@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Farkle - A game of skill and chance")]
-[assembly: AssemblyDescription("Farkle Dice Game")]
+[assembly: AssemblyDescription("Farkle Dice Game - allows for up to 6 players or single player against computer.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Slack & Associates/M.G.Slack")]
 [assembly: AssemblyProduct("Farkle")]
-[assembly: AssemblyCopyright("Copyright ©  2009-2021")]
+[assembly: AssemblyCopyright("Copyright ©  2009-2021 M. G. Slack")]
 [assembly: AssemblyTrademark("N/A")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.0.0")]
-[assembly: AssemblyFileVersion("1.1.0.0")]
+[assembly: AssemblyVersion("1.2.0.0")]
+[assembly: AssemblyFileVersion("1.2.0.0")]

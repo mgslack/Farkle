@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Timers;
 using Dice;
 using GameStatistics;
+using CustomMessageBox;
 
 /*
  * Primary window form (partial class) for the game of Farkle.  Conversion from
@@ -20,11 +21,14 @@ using GameStatistics;
  * 
  * Author: Michael G. Slack
  * Written: 2020-05-20
- * Version: 1.1.0.0
+ * Version: 1.2.0.0
  * 
  * ----------------------------------------------------------------------------
  * 
  * Updated: 2021-01-28 - Added 'keep all' button to keep all of the rolled dice.
+ *          2021-12-24 - Changed to use custom messagebox assembly along with
+ *                       some of the messages.  Changed so can control sounds
+ *                       while still using the icons.
  * 
  */
 namespace Farkle
@@ -52,8 +56,8 @@ namespace Farkle
         private const string STAT_MOST_POINTS_IN_TURN = "Most Points Scored in One Turn";
         private const string FARKLE_MSG = "Farkle!";
         private const string FARKLE_BAD_DICE = 
-            @"You've kept dice that aren't scoring dice.
-              Please remove before rolling or ending turn.";
+            "You've kept dice that aren't scoring dice. Please remove before rolling or ending turn.";
+        private const string FARKLE_END_TURN = "Are you sure you want to end your turn?";
         #endregion
 
         #region Registry Constants
@@ -280,12 +284,13 @@ namespace Farkle
         private bool StartNew()
         {
             bool ret = true;
+            MessageBoxIcon snd = MessageBoxIcon.None;
 
             if (verbose.Checked && currentPlayer != -1 && winningPlayer != -1)
             {
-                if (soundsOn.Checked) SystemSounds.Question.Play();
-                DialogResult res = MessageBox.Show("Are you sure you want to start a new game?", this.Text,
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (soundsOn.Checked) snd = MessageBoxIcon.Question;
+                DialogResult res = MsgBox.Show(this, "Are you sure you want to start a new game?", this.Text,
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question, snd);
                 ret = (res == DialogResult.Yes);
             }
 
@@ -316,6 +321,7 @@ namespace Farkle
         private void InitGameAndGlobals()
         {
             Random rnd = new Random();
+            MessageBoxIcon snd = MessageBoxIcon.None;
 
             keepBtn.Enabled = false; rollDice.Enabled = false; endTurn.Enabled = false;
             ClearRolled();
@@ -325,8 +331,9 @@ namespace Farkle
                 playerScores[i] = 0;
             currentPlayer = rnd.Next(numPlayers);
             DisplayPlayerPanel();
-            if (soundsOn.Checked) SystemSounds.Beep.Play();
-            MessageBox.Show(players[currentPlayer] + " will start.", this.Text, MessageBoxButtons.OK);
+            if (soundsOn.Checked) snd = MessageBoxIcon.Information;
+            MsgBox.Show(this, players[currentPlayer] + " will start.", this.Text, MessageBoxButtons.OK,
+                MessageBoxIcon.Information, snd);
             stats.GameName = this.Text;
             stats.StartGameNoGSS(false);
         }
@@ -416,9 +423,11 @@ namespace Farkle
 
         private void ShowScoreDialog()
         {
-            if (soundsOn.Checked) SystemSounds.Beep.Play();
-            MessageBox.Show(players[currentPlayer] + " got " + keptScore + " points.", this.Text,
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBoxIcon snd = MessageBoxIcon.None;
+
+            if (soundsOn.Checked) snd = MessageBoxIcon.Information;
+            MsgBox.Show(this, players[currentPlayer] + " got " + keptScore + " points.", this.Text,
+                MessageBoxButtons.OK, MessageBoxIcon.Information, snd);
         }
 
         private bool CheckScore(int[] kDice)
@@ -427,6 +436,7 @@ namespace Farkle
             int kscore, ascore, dif;
             DialogResult dRet;
             bool ret = true;
+            MessageBoxIcon snd = MessageBoxIcon.None;
 
             if (safeMode.Checked)
             {
@@ -436,10 +446,10 @@ namespace Farkle
                 dif = ascore - kscore;
                 if (dif > SAFETY_SCORE_DIF)
                 {
-                    if (soundsOn.Checked) SystemSounds.Beep.Play();
-                    dRet = MessageBox.Show("You've left " + dif + @" points behind.
-                         Are you sure you want to roll?", this.Text,
-                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (soundsOn.Checked) snd = MessageBoxIcon.Question;
+                    dRet = MsgBox.Show(this, "You've left " + dif + " points behind. " +
+                         "Are you sure you want to roll?", this.Text,
+                         MessageBoxButtons.YesNo, MessageBoxIcon.Question, snd);
                     ret = (dRet == DialogResult.Yes);
                 }
             }
@@ -583,9 +593,11 @@ namespace Farkle
             }
             catch (Exception ex)
             {
-                if (soundsOn.Checked) SystemSounds.Hand.Play();
-                MessageBox.Show("Cannot load help: " + ex.Message, this.Text, MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBoxIcon snd = MessageBoxIcon.None;
+
+                if (soundsOn.Checked) snd = MessageBoxIcon.Error;
+                MsgBox.Show(this, "Cannot load help: " + ex.Message, this.Text, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error, snd);
             }
         }
 
@@ -600,6 +612,7 @@ namespace Farkle
         {
             int[] dice = new int[NUM_DICE];
             int n = 0;
+            MessageBoxIcon snd = MessageBoxIcon.None;
 
             for (int i = 0; i < NUM_DICE; i++)
                 if (rolledDice[i].Face == DieFace.dfn0) n++;
@@ -607,9 +620,9 @@ namespace Farkle
             { // rolling again, have dice left on table??
                 if (keptCount == 0)
                 {
-                    if (soundsOn.Checked) SystemSounds.Beep.Play();
-                    MessageBox.Show("Need to keep some dice before rolling again!", this.Text,
-                        MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    if (soundsOn.Checked) snd = MessageBoxIcon.Question;
+                    MsgBox.Show(this, "Need to keep some dice before rolling again!", this.Text,
+                        MessageBoxButtons.OK, MessageBoxIcon.Question, snd);
                     return;
                 }
                 // reset count to number to roll again (less than 6)
@@ -621,9 +634,9 @@ namespace Farkle
             for (int i = 0; i < NUM_DICE; i++) dice[i] = (int)keptDice[i].Face;
             if (!farkleEng.validateKeptDice(dice, count42.Checked))
             {
-                if (soundsOn.Checked) SystemSounds.Beep.Play();
-                MessageBox.Show(FARKLE_BAD_DICE, this.Text, MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                if (soundsOn.Checked) snd = MessageBoxIcon.Information;
+                MsgBox.Show(this, FARKLE_BAD_DICE, this.Text, MessageBoxButtons.OK,
+                    MessageBoxIcon.Information, snd);
                 return;
             }
 
@@ -658,12 +671,13 @@ namespace Farkle
             DialogResult ret = DialogResult.Yes;
             int[] dice = new int[NUM_DICE];
             int tscore;
+            MessageBoxIcon snd = MessageBoxIcon.None;
 
             if (verbose.Checked)
             {
-                if (soundsOn.Checked) SystemSounds.Question.Play();
-                ret = MessageBox.Show("Are you sure you wish to end your turn?", this.Text,
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (soundsOn.Checked) snd = MessageBoxIcon.Question;
+                ret = MsgBox.Show(this, FARKLE_END_TURN, this.Text, MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question, snd);
             }
             else
             { 
@@ -671,10 +685,10 @@ namespace Farkle
                 { // check dice for points or not and if rolled (safety mode)
                     if (rolledDice[0].Face == DieFace.dfn0)
                     {
-                        if (soundsOn.Checked) SystemSounds.Question.Play();
-                        ret = MessageBox.Show(@"It appears as if you haven't rolled.
-                            Are you sure you want to pass?", this.Text,
-                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (soundsOn.Checked) snd = MessageBoxIcon.Question;
+                        ret = MsgBox.Show(this, "It appears as if you haven't rolled. " +
+                            "Are you sure you want to pass?", this.Text,
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question, snd);
                     }
                     else
                     {
@@ -682,10 +696,9 @@ namespace Farkle
                         tscore = farkleEng.getKeptScore(dice, count42.Checked);
                         if (tscore > 0)
                         {
-                            if (soundsOn.Checked) SystemSounds.Question.Play();
-                            ret = MessageBox.Show(@"You have points to score with.
-                                Are you sure you want to end your turn?", this.Text,
-                                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (soundsOn.Checked) snd = MessageBoxIcon.Question;
+                            ret = MsgBox.Show(this, "You have points to score with. " + FARKLE_END_TURN,
+                                this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, snd);
                         }
                     }
                 }
@@ -696,18 +709,19 @@ namespace Farkle
                 for (int i = 0; i < NUM_DICE; i++) dice[i] = (int)keptDice[i].Face;
                 if (!farkleEng.validateKeptDice(dice, count42.Checked))
                 {
-                    if (soundsOn.Checked) SystemSounds.Beep.Play();
-                    MessageBox.Show(FARKLE_BAD_DICE, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (soundsOn.Checked) snd = MessageBoxIcon.Information;
+                    MsgBox.Show(this, FARKLE_BAD_DICE, this.Text, MessageBoxButtons.OK,
+                        MessageBoxIcon.Information, snd);
                     ret = DialogResult.Cancel;
                 }
                 else
                 { // potentially add to score
                     if (strictScoring.Checked && keptScore < DEF_MIN_SCORE)
                     {
-                        if (soundsOn.Checked) SystemSounds.Question.Play();
-                        ret = MessageBox.Show("You haven't made the minimum score (" + DEF_MIN_SCORE + @").
-                             Are you sure you want to end your turn?", this.Text,
-                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (soundsOn.Checked) snd = MessageBoxIcon.Question;
+                        ret = MsgBox.Show(this, "You haven't made the minimum score (" + DEF_MIN_SCORE +
+                            "). " + FARKLE_END_TURN, this.Text, MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question, snd);
                     }
                     if (ret == DialogResult.Yes)
                     {
@@ -732,8 +746,9 @@ namespace Farkle
                         ShowScoreDialog();
                     else
                     {
-                        if (soundsOn.Checked) SystemSounds.Beep.Play();
-                        MessageBox.Show(FARKLE_MSG, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (soundsOn.Checked) snd = MessageBoxIcon.Information;
+                        MsgBox.Show(this, FARKLE_MSG, this.Text, MessageBoxButtons.OK,
+                            MessageBoxIcon.Information, snd);
                     }
                 }
                 DoEvent(NextPlayer);
@@ -810,8 +825,10 @@ namespace Farkle
                     }
                     if (verbose.Checked)
                     { // show message
-                        if (soundsOn.Checked) SystemSounds.Beep.Play();
-                        MessageBox.Show(FARKLE_MSG, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBoxIcon snd = MessageBoxIcon.None;
+                        if (soundsOn.Checked) snd = MessageBoxIcon.Information;
+                        MsgBox.Show(this, FARKLE_MSG, this.Text, MessageBoxButtons.OK,
+                            MessageBoxIcon.Information, snd);
                     }
                     else
                     { // pause
@@ -839,6 +856,8 @@ namespace Farkle
 
         private void CustomNextPlayer(object sender, EventArgs e)
         {
+            MessageBoxIcon snd = MessageBoxIcon.None;
+
             ClearRolled();
             ClearKept(true);
             keptCount = 0;
@@ -853,9 +872,9 @@ namespace Farkle
                 // who won?
                 for (int i = 1; i < numPlayers; i++)
                     if (playerScores[i] > playerScores[winningPlayer]) winningPlayer = i;
-                if (soundsOn.Checked) SystemSounds.Beep.Play();
-                MessageBox.Show(players[winningPlayer] + " has won!", this.Text, MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                if (soundsOn.Checked) snd = MessageBoxIcon.Information;
+                MsgBox.Show(this, players[winningPlayer] + " has won!", this.Text, MessageBoxButtons.OK,
+                    MessageBoxIcon.Information, snd);
                 FinishStatistics();
                 newGame.Focus();
             }
@@ -864,8 +883,9 @@ namespace Farkle
             { // no winner yet, move to next player
                 if (verbose.Checked)
                 {
-                    if (soundsOn.Checked) SystemSounds.Beep.Play();
-                    MessageBox.Show("It's " + players[currentPlayer] + " turn.", this.Text, MessageBoxButtons.OK);
+                    if (soundsOn.Checked) snd = MessageBoxIcon.Information;
+                    MsgBox.Show(this, "It's " + players[currentPlayer] + " turn.", this.Text, 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information, snd);
                 }
                 if (compPlayerTwo && currentPlayer == 1)
                 {

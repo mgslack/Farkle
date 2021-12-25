@@ -36,6 +36,9 @@
     <ApplicationIcon>Farkle.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CustomMessageBox">
+      <HintPath>..\CustomMessageBox\bin\Release\CustomMessageBox.dll</HintPath>
+    </Reference>
     <Reference Include="Dice, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dice\bin\Release\Dice.dll</HintPath>
