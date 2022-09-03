@@ -12,4 +12,4 @@ somewhat simplistic (saves all scoring die).
 Game is dependent on the Dice component library (need it to open the forms in VS) along with
 the GameStatistics and CustomMessageBox libraries/Assembly's.
 
-Game last edited/built in VS 2019.
+Game last edited/built in VS 2022.
