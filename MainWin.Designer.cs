@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWin));
             this.rDicePnl = new System.Windows.Forms.Panel();
+            this.keepBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.rolled6 = new Dice.Die();
             this.rolled5 = new Dice.Die();
@@ -68,7 +69,6 @@
             this.player2 = new System.Windows.Forms.Label();
             this.player1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.keepBtn = new System.Windows.Forms.Button();
             this.rDicePnl.SuspendLayout();
             this.kDicePnl.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -87,17 +87,31 @@
             this.rDicePnl.Controls.Add(this.rolled3);
             this.rDicePnl.Controls.Add(this.rolled2);
             this.rDicePnl.Controls.Add(this.rolled1);
-            this.rDicePnl.Location = new System.Drawing.Point(22, 21);
+            this.rDicePnl.Location = new System.Drawing.Point(16, 17);
+            this.rDicePnl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rDicePnl.Name = "rDicePnl";
-            this.rDicePnl.Size = new System.Drawing.Size(646, 83);
+            this.rDicePnl.Size = new System.Drawing.Size(487, 68);
             this.rDicePnl.TabIndex = 0;
+            // 
+            // keepBtn
+            // 
+            this.keepBtn.Enabled = false;
+            this.keepBtn.Location = new System.Drawing.Point(14, 27);
+            this.keepBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.keepBtn.Name = "keepBtn";
+            this.keepBtn.Size = new System.Drawing.Size(56, 19);
+            this.keepBtn.TabIndex = 11;
+            this.keepBtn.Text = "&Keep all";
+            this.keepBtn.UseVisualStyleBackColor = true;
+            this.keepBtn.Click += new System.EventHandler(this.keepBtn_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 4);
+            this.label1.Location = new System.Drawing.Point(2, 3);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 17);
+            this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 10;
             this.label1.Text = "Rolled Dice";
             // 
@@ -108,13 +122,12 @@
             this.rolled6.CornerRadius = 6;
             this.rolled6.Face = Dice.DieFace.dfn0;
             this.rolled6.ForeColor = System.Drawing.Color.Black;
-            this.rolled6.Location = new System.Drawing.Point(543, 4);
-            this.rolled6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rolled6.Location = new System.Drawing.Point(407, 3);
             this.rolled6.MaxFaces = Dice.DieFace.dfn6;
             this.rolled6.Name = "rolled6";
             this.rolled6.Rotation = Dice.DieRotation.Default;
             this.rolled6.RoundedCorners = true;
-            this.rolled6.Size = new System.Drawing.Size(72, 73);
+            this.rolled6.Size = new System.Drawing.Size(54, 59);
             this.rolled6.TabIndex = 5;
             this.rolled6.Tag = "5";
             this.rolled6.Click += new System.EventHandler(this.rolledX_Click);
@@ -126,13 +139,12 @@
             this.rolled5.CornerRadius = 6;
             this.rolled5.Face = Dice.DieFace.dfn0;
             this.rolled5.ForeColor = System.Drawing.Color.Black;
-            this.rolled5.Location = new System.Drawing.Point(457, 4);
-            this.rolled5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rolled5.Location = new System.Drawing.Point(343, 3);
             this.rolled5.MaxFaces = Dice.DieFace.dfn6;
             this.rolled5.Name = "rolled5";
             this.rolled5.Rotation = Dice.DieRotation.Default;
             this.rolled5.RoundedCorners = true;
-            this.rolled5.Size = new System.Drawing.Size(72, 73);
+            this.rolled5.Size = new System.Drawing.Size(54, 59);
             this.rolled5.TabIndex = 4;
             this.rolled5.Tag = "4";
             this.rolled5.Click += new System.EventHandler(this.rolledX_Click);
@@ -144,13 +156,12 @@
             this.rolled4.CornerRadius = 6;
             this.rolled4.Face = Dice.DieFace.dfn0;
             this.rolled4.ForeColor = System.Drawing.Color.Black;
-            this.rolled4.Location = new System.Drawing.Point(370, 4);
-            this.rolled4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rolled4.Location = new System.Drawing.Point(278, 3);
             this.rolled4.MaxFaces = Dice.DieFace.dfn6;
             this.rolled4.Name = "rolled4";
             this.rolled4.Rotation = Dice.DieRotation.Default;
             this.rolled4.RoundedCorners = true;
-            this.rolled4.Size = new System.Drawing.Size(72, 73);
+            this.rolled4.Size = new System.Drawing.Size(54, 59);
             this.rolled4.TabIndex = 3;
             this.rolled4.Tag = "3";
             this.rolled4.Click += new System.EventHandler(this.rolledX_Click);
@@ -162,13 +173,12 @@
             this.rolled3.CornerRadius = 6;
             this.rolled3.Face = Dice.DieFace.dfn0;
             this.rolled3.ForeColor = System.Drawing.Color.Black;
-            this.rolled3.Location = new System.Drawing.Point(281, 4);
-            this.rolled3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rolled3.Location = new System.Drawing.Point(211, 3);
             this.rolled3.MaxFaces = Dice.DieFace.dfn6;
             this.rolled3.Name = "rolled3";
             this.rolled3.Rotation = Dice.DieRotation.Default;
             this.rolled3.RoundedCorners = true;
-            this.rolled3.Size = new System.Drawing.Size(72, 73);
+            this.rolled3.Size = new System.Drawing.Size(54, 59);
             this.rolled3.TabIndex = 2;
             this.rolled3.Tag = "2";
             this.rolled3.Click += new System.EventHandler(this.rolledX_Click);
@@ -180,13 +190,12 @@
             this.rolled2.CornerRadius = 6;
             this.rolled2.Face = Dice.DieFace.dfn0;
             this.rolled2.ForeColor = System.Drawing.Color.Black;
-            this.rolled2.Location = new System.Drawing.Point(192, 4);
-            this.rolled2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rolled2.Location = new System.Drawing.Point(144, 3);
             this.rolled2.MaxFaces = Dice.DieFace.dfn6;
             this.rolled2.Name = "rolled2";
             this.rolled2.Rotation = Dice.DieRotation.Default;
             this.rolled2.RoundedCorners = true;
-            this.rolled2.Size = new System.Drawing.Size(72, 73);
+            this.rolled2.Size = new System.Drawing.Size(54, 59);
             this.rolled2.TabIndex = 1;
             this.rolled2.Tag = "1";
             this.rolled2.Click += new System.EventHandler(this.rolledX_Click);
@@ -198,13 +207,12 @@
             this.rolled1.CornerRadius = 6;
             this.rolled1.Face = Dice.DieFace.dfn0;
             this.rolled1.ForeColor = System.Drawing.Color.Black;
-            this.rolled1.Location = new System.Drawing.Point(107, 4);
-            this.rolled1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rolled1.Location = new System.Drawing.Point(80, 3);
             this.rolled1.MaxFaces = Dice.DieFace.dfn6;
             this.rolled1.Name = "rolled1";
             this.rolled1.Rotation = Dice.DieRotation.Default;
             this.rolled1.RoundedCorners = true;
-            this.rolled1.Size = new System.Drawing.Size(72, 73);
+            this.rolled1.Size = new System.Drawing.Size(54, 59);
             this.rolled1.TabIndex = 0;
             this.rolled1.Tag = "0";
             this.rolled1.Click += new System.EventHandler(this.rolledX_Click);
@@ -220,26 +228,29 @@
             this.kDicePnl.Controls.Add(this.kept3);
             this.kDicePnl.Controls.Add(this.kept2);
             this.kDicePnl.Controls.Add(this.kept1);
-            this.kDicePnl.Location = new System.Drawing.Point(22, 110);
+            this.kDicePnl.Location = new System.Drawing.Point(16, 89);
+            this.kDicePnl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.kDicePnl.Name = "kDicePnl";
-            this.kDicePnl.Size = new System.Drawing.Size(646, 83);
+            this.kDicePnl.Size = new System.Drawing.Size(487, 68);
             this.kDicePnl.TabIndex = 1;
             // 
             // keptScoreLbl
             // 
             this.keptScoreLbl.AutoSize = true;
-            this.keptScoreLbl.Location = new System.Drawing.Point(16, 34);
+            this.keptScoreLbl.Location = new System.Drawing.Point(12, 28);
+            this.keptScoreLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.keptScoreLbl.Name = "keptScoreLbl";
-            this.keptScoreLbl.Size = new System.Drawing.Size(24, 17);
+            this.keptScoreLbl.Size = new System.Drawing.Size(19, 13);
             this.keptScoreLbl.TabIndex = 10;
             this.keptScoreLbl.Text = "[0]";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 4);
+            this.label2.Location = new System.Drawing.Point(2, 3);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 17);
+            this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 10;
             this.label2.Text = "Kept Dice";
             // 
@@ -250,13 +261,12 @@
             this.kept6.CornerRadius = 6;
             this.kept6.Face = Dice.DieFace.dfn0;
             this.kept6.ForeColor = System.Drawing.Color.Black;
-            this.kept6.Location = new System.Drawing.Point(543, 4);
-            this.kept6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kept6.Location = new System.Drawing.Point(407, 3);
             this.kept6.MaxFaces = Dice.DieFace.dfn6;
             this.kept6.Name = "kept6";
             this.kept6.Rotation = Dice.DieRotation.Default;
             this.kept6.RoundedCorners = true;
-            this.kept6.Size = new System.Drawing.Size(72, 73);
+            this.kept6.Size = new System.Drawing.Size(54, 59);
             this.kept6.TabIndex = 6;
             this.kept6.Tag = "5";
             this.kept6.Click += new System.EventHandler(this.keptX_Click);
@@ -268,13 +278,12 @@
             this.kept5.CornerRadius = 6;
             this.kept5.Face = Dice.DieFace.dfn0;
             this.kept5.ForeColor = System.Drawing.Color.Black;
-            this.kept5.Location = new System.Drawing.Point(457, 4);
-            this.kept5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kept5.Location = new System.Drawing.Point(343, 3);
             this.kept5.MaxFaces = Dice.DieFace.dfn6;
             this.kept5.Name = "kept5";
             this.kept5.Rotation = Dice.DieRotation.Default;
             this.kept5.RoundedCorners = true;
-            this.kept5.Size = new System.Drawing.Size(72, 73);
+            this.kept5.Size = new System.Drawing.Size(54, 59);
             this.kept5.TabIndex = 5;
             this.kept5.Tag = "4";
             this.kept5.Click += new System.EventHandler(this.keptX_Click);
@@ -286,13 +295,12 @@
             this.kept4.CornerRadius = 6;
             this.kept4.Face = Dice.DieFace.dfn0;
             this.kept4.ForeColor = System.Drawing.Color.Black;
-            this.kept4.Location = new System.Drawing.Point(370, 4);
-            this.kept4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kept4.Location = new System.Drawing.Point(278, 3);
             this.kept4.MaxFaces = Dice.DieFace.dfn6;
             this.kept4.Name = "kept4";
             this.kept4.Rotation = Dice.DieRotation.Default;
             this.kept4.RoundedCorners = true;
-            this.kept4.Size = new System.Drawing.Size(72, 73);
+            this.kept4.Size = new System.Drawing.Size(54, 59);
             this.kept4.TabIndex = 4;
             this.kept4.Tag = "3";
             this.kept4.Click += new System.EventHandler(this.keptX_Click);
@@ -304,13 +312,12 @@
             this.kept3.CornerRadius = 6;
             this.kept3.Face = Dice.DieFace.dfn0;
             this.kept3.ForeColor = System.Drawing.Color.Black;
-            this.kept3.Location = new System.Drawing.Point(281, 4);
-            this.kept3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kept3.Location = new System.Drawing.Point(211, 3);
             this.kept3.MaxFaces = Dice.DieFace.dfn6;
             this.kept3.Name = "kept3";
             this.kept3.Rotation = Dice.DieRotation.Default;
             this.kept3.RoundedCorners = true;
-            this.kept3.Size = new System.Drawing.Size(72, 73);
+            this.kept3.Size = new System.Drawing.Size(54, 59);
             this.kept3.TabIndex = 3;
             this.kept3.Tag = "2";
             this.kept3.Click += new System.EventHandler(this.keptX_Click);
@@ -322,13 +329,12 @@
             this.kept2.CornerRadius = 6;
             this.kept2.Face = Dice.DieFace.dfn0;
             this.kept2.ForeColor = System.Drawing.Color.Black;
-            this.kept2.Location = new System.Drawing.Point(192, 4);
-            this.kept2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kept2.Location = new System.Drawing.Point(144, 3);
             this.kept2.MaxFaces = Dice.DieFace.dfn6;
             this.kept2.Name = "kept2";
             this.kept2.Rotation = Dice.DieRotation.Default;
             this.kept2.RoundedCorners = true;
-            this.kept2.Size = new System.Drawing.Size(72, 73);
+            this.kept2.Size = new System.Drawing.Size(54, 59);
             this.kept2.TabIndex = 2;
             this.kept2.Tag = "1";
             this.kept2.Click += new System.EventHandler(this.keptX_Click);
@@ -340,13 +346,12 @@
             this.kept1.CornerRadius = 6;
             this.kept1.Face = Dice.DieFace.dfn0;
             this.kept1.ForeColor = System.Drawing.Color.Black;
-            this.kept1.Location = new System.Drawing.Point(107, 4);
-            this.kept1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kept1.Location = new System.Drawing.Point(80, 3);
             this.kept1.MaxFaces = Dice.DieFace.dfn6;
             this.kept1.Name = "kept1";
             this.kept1.Rotation = Dice.DieRotation.Default;
             this.kept1.RoundedCorners = true;
-            this.kept1.Size = new System.Drawing.Size(72, 73);
+            this.kept1.Size = new System.Drawing.Size(54, 59);
             this.kept1.TabIndex = 1;
             this.kept1.Tag = "0";
             this.kept1.Click += new System.EventHandler(this.keptX_Click);
@@ -361,9 +366,11 @@
             this.groupBox1.Controls.Add(this.count42);
             this.groupBox1.Controls.Add(this.strictScoring);
             this.groupBox1.Controls.Add(this.verbose);
-            this.groupBox1.Location = new System.Drawing.Point(285, 199);
+            this.groupBox1.Location = new System.Drawing.Point(230, 162);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(383, 136);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(275, 110);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Configuration";
@@ -375,7 +382,8 @@
             0,
             0,
             0});
-            this.scoreTo.Location = new System.Drawing.Point(243, 102);
+            this.scoreTo.Location = new System.Drawing.Point(186, 82);
+            this.scoreTo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.scoreTo.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -387,7 +395,7 @@
             0,
             0});
             this.scoreTo.Name = "scoreTo";
-            this.scoreTo.Size = new System.Drawing.Size(86, 22);
+            this.scoreTo.Size = new System.Drawing.Size(64, 20);
             this.scoreTo.TabIndex = 7;
             this.scoreTo.Value = new decimal(new int[] {
             10000,
@@ -399,9 +407,10 @@
             // scoreToLbl
             // 
             this.scoreToLbl.AutoSize = true;
-            this.scoreToLbl.Location = new System.Drawing.Point(167, 104);
+            this.scoreToLbl.Location = new System.Drawing.Point(129, 83);
+            this.scoreToLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.scoreToLbl.Name = "scoreToLbl";
-            this.scoreToLbl.Size = new System.Drawing.Size(70, 17);
+            this.scoreToLbl.Size = new System.Drawing.Size(54, 13);
             this.scoreToLbl.TabIndex = 6;
             this.scoreToLbl.Text = "Score &To:";
             // 
@@ -410,9 +419,10 @@
             this.safeMode.AutoSize = true;
             this.safeMode.Checked = true;
             this.safeMode.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.safeMode.Location = new System.Drawing.Point(243, 49);
+            this.safeMode.Location = new System.Drawing.Point(186, 39);
+            this.safeMode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.safeMode.Name = "safeMode";
-            this.safeMode.Size = new System.Drawing.Size(98, 21);
+            this.safeMode.Size = new System.Drawing.Size(78, 17);
             this.safeMode.TabIndex = 5;
             this.safeMode.Text = "Safe &Mode";
             this.safeMode.UseVisualStyleBackColor = true;
@@ -422,9 +432,10 @@
             this.soundsOn.AutoSize = true;
             this.soundsOn.Checked = true;
             this.soundsOn.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.soundsOn.Location = new System.Drawing.Point(243, 22);
+            this.soundsOn.Location = new System.Drawing.Point(186, 17);
+            this.soundsOn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.soundsOn.Name = "soundsOn";
-            this.soundsOn.Size = new System.Drawing.Size(101, 21);
+            this.soundsOn.Size = new System.Drawing.Size(79, 17);
             this.soundsOn.TabIndex = 4;
             this.soundsOn.Text = "Sounds &On";
             this.soundsOn.UseVisualStyleBackColor = true;
@@ -432,9 +443,10 @@
             // sortRolls
             // 
             this.sortRolls.AutoSize = true;
-            this.sortRolls.Location = new System.Drawing.Point(12, 103);
+            this.sortRolls.Location = new System.Drawing.Point(10, 83);
+            this.sortRolls.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.sortRolls.Name = "sortRolls";
-            this.sortRolls.Size = new System.Drawing.Size(91, 21);
+            this.sortRolls.Size = new System.Drawing.Size(71, 17);
             this.sortRolls.TabIndex = 3;
             this.sortRolls.Text = "Sort Ro&lls";
             this.sortRolls.UseVisualStyleBackColor = true;
@@ -444,9 +456,10 @@
             this.count42.AutoSize = true;
             this.count42.Checked = true;
             this.count42.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.count42.Location = new System.Drawing.Point(12, 76);
+            this.count42.Location = new System.Drawing.Point(10, 61);
+            this.count42.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.count42.Name = "count42";
-            this.count42.Size = new System.Drawing.Size(224, 21);
+            this.count42.Size = new System.Drawing.Size(172, 17);
             this.count42.TabIndex = 2;
             this.count42.Text = "&Count 4 of a kind/pair as 3 pair";
             this.count42.UseVisualStyleBackColor = true;
@@ -456,9 +469,10 @@
             this.strictScoring.AutoSize = true;
             this.strictScoring.Checked = true;
             this.strictScoring.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.strictScoring.Location = new System.Drawing.Point(12, 49);
+            this.strictScoring.Location = new System.Drawing.Point(10, 39);
+            this.strictScoring.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.strictScoring.Name = "strictScoring";
-            this.strictScoring.Size = new System.Drawing.Size(154, 21);
+            this.strictScoring.Size = new System.Drawing.Size(119, 17);
             this.strictScoring.TabIndex = 1;
             this.strictScoring.Text = "&Strict Scoring Rules";
             this.strictScoring.UseVisualStyleBackColor = true;
@@ -466,9 +480,10 @@
             // verbose
             // 
             this.verbose.AutoSize = true;
-            this.verbose.Location = new System.Drawing.Point(12, 22);
+            this.verbose.Location = new System.Drawing.Point(10, 17);
+            this.verbose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.verbose.Name = "verbose";
-            this.verbose.Size = new System.Drawing.Size(151, 21);
+            this.verbose.Size = new System.Drawing.Size(116, 17);
             this.verbose.TabIndex = 0;
             this.verbose.Text = "&Verbose Messages";
             this.verbose.UseVisualStyleBackColor = true;
@@ -476,9 +491,10 @@
             // newGame
             // 
             this.newGame.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.newGame.Location = new System.Drawing.Point(297, 351);
+            this.newGame.Location = new System.Drawing.Point(232, 276);
+            this.newGame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.newGame.Name = "newGame";
-            this.newGame.Size = new System.Drawing.Size(116, 25);
+            this.newGame.Size = new System.Drawing.Size(87, 20);
             this.newGame.TabIndex = 5;
             this.newGame.Text = "&New Game";
             this.newGame.UseVisualStyleBackColor = true;
@@ -487,9 +503,10 @@
             // exitBtn
             // 
             this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.exitBtn.Location = new System.Drawing.Point(297, 382);
+            this.exitBtn.Location = new System.Drawing.Point(232, 301);
+            this.exitBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(116, 25);
+            this.exitBtn.Size = new System.Drawing.Size(87, 20);
             this.exitBtn.TabIndex = 6;
             this.exitBtn.Text = "E&xit";
             this.exitBtn.UseVisualStyleBackColor = true;
@@ -498,9 +515,10 @@
             // helpBtn
             // 
             this.helpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.helpBtn.Location = new System.Drawing.Point(421, 382);
+            this.helpBtn.Location = new System.Drawing.Point(325, 301);
+            this.helpBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.helpBtn.Name = "helpBtn";
-            this.helpBtn.Size = new System.Drawing.Size(116, 25);
+            this.helpBtn.Size = new System.Drawing.Size(87, 20);
             this.helpBtn.TabIndex = 7;
             this.helpBtn.Text = "&Help";
             this.helpBtn.UseVisualStyleBackColor = true;
@@ -510,9 +528,10 @@
             // 
             this.rollDice.Enabled = false;
             this.rollDice.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.rollDice.Location = new System.Drawing.Point(421, 351);
+            this.rollDice.Location = new System.Drawing.Point(325, 276);
+            this.rollDice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rollDice.Name = "rollDice";
-            this.rollDice.Size = new System.Drawing.Size(116, 25);
+            this.rollDice.Size = new System.Drawing.Size(87, 20);
             this.rollDice.TabIndex = 8;
             this.rollDice.Text = "&Roll Dice";
             this.rollDice.UseVisualStyleBackColor = true;
@@ -522,9 +541,10 @@
             // 
             this.endTurn.Enabled = false;
             this.endTurn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.endTurn.Location = new System.Drawing.Point(543, 351);
+            this.endTurn.Location = new System.Drawing.Point(418, 276);
+            this.endTurn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.endTurn.Name = "endTurn";
-            this.endTurn.Size = new System.Drawing.Size(116, 25);
+            this.endTurn.Size = new System.Drawing.Size(87, 20);
             this.endTurn.TabIndex = 9;
             this.endTurn.Text = "&End Turn";
             this.endTurn.UseVisualStyleBackColor = true;
@@ -541,18 +561,20 @@
             this.panel1.Controls.Add(this.player2);
             this.panel1.Controls.Add(this.player1);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(21, 203);
+            this.panel1.Location = new System.Drawing.Point(16, 165);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(258, 173);
+            this.panel1.Size = new System.Drawing.Size(208, 141);
             this.panel1.TabIndex = 10;
             // 
             // player6
             // 
             this.player6.AutoSize = true;
             this.player6.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player6.Location = new System.Drawing.Point(4, 137);
+            this.player6.Location = new System.Drawing.Point(3, 111);
+            this.player6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.player6.Name = "player6";
-            this.player6.Size = new System.Drawing.Size(16, 17);
+            this.player6.Size = new System.Drawing.Size(14, 14);
             this.player6.TabIndex = 11;
             this.player6.Text = "6";
             // 
@@ -560,9 +582,10 @@
             // 
             this.player5.AutoSize = true;
             this.player5.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player5.Location = new System.Drawing.Point(4, 116);
+            this.player5.Location = new System.Drawing.Point(3, 94);
+            this.player5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.player5.Name = "player5";
-            this.player5.Size = new System.Drawing.Size(16, 17);
+            this.player5.Size = new System.Drawing.Size(14, 14);
             this.player5.TabIndex = 11;
             this.player5.Text = "5";
             // 
@@ -570,9 +593,10 @@
             // 
             this.player4.AutoSize = true;
             this.player4.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player4.Location = new System.Drawing.Point(4, 95);
+            this.player4.Location = new System.Drawing.Point(3, 77);
+            this.player4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.player4.Name = "player4";
-            this.player4.Size = new System.Drawing.Size(16, 17);
+            this.player4.Size = new System.Drawing.Size(14, 14);
             this.player4.TabIndex = 11;
             this.player4.Text = "4";
             // 
@@ -580,9 +604,10 @@
             // 
             this.player3.AutoSize = true;
             this.player3.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player3.Location = new System.Drawing.Point(4, 70);
+            this.player3.Location = new System.Drawing.Point(3, 57);
+            this.player3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.player3.Name = "player3";
-            this.player3.Size = new System.Drawing.Size(16, 17);
+            this.player3.Size = new System.Drawing.Size(14, 14);
             this.player3.TabIndex = 11;
             this.player3.Text = "3";
             // 
@@ -590,9 +615,10 @@
             // 
             this.player2.AutoSize = true;
             this.player2.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player2.Location = new System.Drawing.Point(4, 47);
+            this.player2.Location = new System.Drawing.Point(3, 38);
+            this.player2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.player2.Name = "player2";
-            this.player2.Size = new System.Drawing.Size(16, 17);
+            this.player2.Size = new System.Drawing.Size(14, 14);
             this.player2.TabIndex = 11;
             this.player2.Text = "2";
             // 
@@ -600,37 +626,28 @@
             // 
             this.player1.AutoSize = true;
             this.player1.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player1.Location = new System.Drawing.Point(4, 21);
+            this.player1.Location = new System.Drawing.Point(3, 17);
+            this.player1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.player1.Name = "player1";
-            this.player1.Size = new System.Drawing.Size(16, 17);
+            this.player1.Size = new System.Drawing.Size(14, 14);
             this.player1.TabIndex = 11;
             this.player1.Text = "1";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 0);
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(231, 17);
+            this.label3.Size = new System.Drawing.Size(199, 13);
             this.label3.TabIndex = 11;
-            this.label3.Text = "======= Players / Scores =======";
-            // 
-            // keepBtn
-            // 
-            this.keepBtn.Enabled = false;
-            this.keepBtn.Location = new System.Drawing.Point(19, 33);
-            this.keepBtn.Name = "keepBtn";
-            this.keepBtn.Size = new System.Drawing.Size(75, 23);
-            this.keepBtn.TabIndex = 11;
-            this.keepBtn.Text = "&Keep all";
-            this.keepBtn.UseVisualStyleBackColor = true;
-            this.keepBtn.Click += new System.EventHandler(this.keepBtn_Click);
+            this.label3.Text = "========= Players / Scores =========";
             // 
             // MainWin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 423);
+            this.ClientSize = new System.Drawing.Size(518, 334);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.endTurn);
             this.Controls.Add(this.rollDice);
@@ -643,6 +660,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "MainWin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

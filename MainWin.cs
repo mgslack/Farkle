@@ -21,7 +21,7 @@ using CustomMessageBox;
  * 
  * Author: Michael G. Slack
  * Written: 2020-05-20
- * Version: 1.2.0.0
+ * Version: 1.3.0.0
  * 
  * ----------------------------------------------------------------------------
  * 
@@ -29,6 +29,8 @@ using CustomMessageBox;
  *          2021-12-24 - Changed to use custom messagebox assembly along with
  *                       some of the messages.  Changed so can control sounds
  *                       while still using the icons.
+ *          2022-09-03 - Updated player/score format to right justify the
+ *                       player scores in display.
  * 
  */
 namespace Farkle
@@ -48,7 +50,7 @@ namespace Farkle
         #region Private Constants
         private const string HTML_HELP_FILE = "Farkle_help.html";
         private const string COMP_PLAYER_NAMES_FN = "farkle_names.txt";
-        private const string PLAYER_DISP_FMT = "{0,-20} {1}";
+        private const string PLAYER_DISP_FMT = "{0,-20} {1,7}";
         private const string SOUND_NAMESPACE = "Farkle.sounds.";
         private const string SOUND_DICE = "farkle_rolldice.wav";
         private const string SOUND_FARKLE = "farkle_farkle.wav";
